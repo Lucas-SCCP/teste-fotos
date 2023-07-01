@@ -2,145 +2,59 @@
 <!-- eslint-disable no-undef -->
 <template>
   <main>
-    <nav class="navbar">
+    <!--<nav class="navbar">
       <img src="/src/assets/svg/logo.svg" class="navbar__logo" alt="" />
-    </nav>
-
-    <section class="section__block">
-      <LoadingComponent v-if="isLoading" />
-      <div class="speed__block">
-        <template v-if="speedBlockLoading">
-          <div class="speed__block--loading">
-            <img
-              src="/src/assets/svg/logo.svg"
-              class="speed__block--loading-image"
-            />
-          </div>
-        </template>
-
-        <template v-else>
-          <button class="speed__block--refresh" @click.prevent="restartTest()">
-            <img src="/src/assets/svg/refresh.svg" alt="" />
-          </button>
-          <SpeedometerComponent class="speed__block--image" :speedRate="+speedTest.download" />
-          <div class="speed__block--content">
-            <div class="speed__block--data">
-              <span
-                v-tooltip="{
-                  content: downloadText,
-                  placement: 'bottom',
-                }"
-                class="speed__block--data-title"
-              >
-                Download:
-              </span>
-              <p class="speed__block--data-count">
-                {{ speedTest.download }}
-                <span style="font-size: 11px">Mbps</span>
-              </p>
-            </div>
-            <div class="speed__block--data">
-              <span
-                class="speed__block--data-title"
-                v-tooltip="{
-                  content: uploadText,
-                  placement: 'bottom',
-                }"
-                >Upload:</span
-              >
-              <p class="speed__block--data-count">
-                {{ speedTest.upload }}
-                <span style="font-size: 11px">Mbps</span>
-              </p>
-            </div>
-            <div class="speed__block--data">
-              <span
-                class="speed__block--data-title"
-                v-tooltip="{
-                  content: pingText,
-                  placement: 'bottom',
-                }"
-                >Ping:</span
-              >
-              <p class="speed__block--data-count">
-                {{ speedTest.ping }}
-                <span style="font-size: 11px">ms</span>
-              </p>
-            </div>
-          </div>
-        </template>
+    </nav>-->
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <!--<div class="numbertext">1 / 3</div>-->
+        <img src="https://scontent.fbau3-2.fna.fbcdn.net/v/t31.18172-8/11807755_10207587619555136_708705202085441635_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeHlzzP3GA0R8QCzDfkuFzk5S-7khg6fPQ9L7uSGDp89D9MlMTmyAMu09wLnSJ9uFCI&_nc_ohc=5P8LkBK2qz0AX_ScpJy&_nc_ht=scontent.fbau3-2.fna&oh=00_AfD3LBagO4AqLBJhKKl297sA85WaGsHdLKQNOLOiCdOo9g&oe=64C81003" style="width:100%">
+        <!--<div class="text">Caption Text</div>-->
       </div>
-      <div class="ip__block">
-        <div class="ip__block--content">
-          <img src="/src/assets/svg/ip.svg" alt="" />
-          <div class="ip__block--data">
-            <p class="ip__block--data-title">Your IP address</p>
-            <h3
-              v-if="locationData.ip"
-              class="ip__block--data-text fade-in-left"
-            >
-              {{ locationData.ip }}
-            </h3>
-            <h3
-              v-else
-              class="ip__block--data-text ip__block--data-loading fade-in-left"
-            ></h3>
-          </div>
+      <div class="mySlides fade">
+        <!--<div class="numbertext">2 / 3</div>-->
+        <img src="https://scontent.fbau3-2.fna.fbcdn.net/v/t31.18172-8/11059721_10207691591394367_7159485778453789867_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeHYAg_le6jJpTVNQnRdhD4-O6We1Hsf-Mc7pZ7Uex_4x96lrdDd-qG9MGpCcXrpweI&_nc_ohc=yC747Fs-tb8AX_pbLmu&_nc_ht=scontent.fbau3-2.fna&oh=00_AfB2EJ9AcQzs0V9YGsY4iKFaUsMQmXf8x3ikYEPJSBtqoA&oe=64C80759" style="width:100%">
+        <!--<div class="text">Caption Text</div>-->
+      </div>
+      <div class="mySlides fade">
+        <!--<div class="numbertext">3 / 3</div>-->
+        <img src="https://scontent.fbau3-1.fna.fbcdn.net/v/t31.18172-8/18491673_10213263885658241_1729706648076572917_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeHFMLnEqMvjyVHwDlNLCFR0YVgzo2FAd7FhWDOjYUB3sRF0TKBlX2o4X4x_1ljEzlE&_nc_ohc=qhO-6Jyl3_AAX8UIeJZ&_nc_ht=scontent.fbau3-1.fna&oh=00_AfB8m2R6kWt7JvpZLh_sJ4hqjF1T8RGpxMKsn_yxUGUFCg&oe=64C80EEE" style="width:100%">
+        <!--<div class="text">Caption Text</div>-->
+      </div>
+      <a class="prev" @click="plusSlides(-1)">❮</a>
+      <a class="next" @click="plusSlides(1)">❯</a>
+      </div>
+      <div class="grid-container">
+        <div class="grid-item-25">
         </div>
-        <div class="ip__block--content">
-          <img src="/src/assets/svg/internet.svg" alt="" />
-          <div class="ip__block--data">
-            <p class="ip__block--data-title">Your network</p>
-            <h3
-              v-if="locationData.network"
-              class="ip__block--data-text fade-in-left"
-            >
-              {{ locationData.network }}
-            </h3>
-            <h3
-              v-else
-              class="ip__block--data-text ip__block--data-loading fade-in-left"
-            ></h3>
-          </div>
+        <div class="grid-item-50">
+          Teste
         </div>
-        <div class="ip__block--content">
-          <img src="/src/assets/svg/marker-orange.svg" alt="" />
-          <div class="ip__block--data">
-            <p class="ip__block--data-title">Your location</p>
-            <h3
-              v-if="locationData.userLocation"
-              class="ip__block--data-text orange fade-in-left"
-            >
-              {{ locationData.userLocation }}
-            </h3>
-            <h3
-              v-else
-              class="ip__block--data-text ip__block--data-loading fade-in-left"
-            ></h3>
-          </div>
-        </div>
-        <div class="ip__block--content">
-          <img src="/src/assets/svg/marker-red.svg" alt="" />
-          <div class="ip__block--data">
-            <p class="ip__block--data-title">Server location</p>
-            <h3
-              v-if="locationData.serverLocation"
-              class="ip__block--data-text red fade-in-left"
-            >
-              {{ locationData.serverLocation }}
-            </h3>
-            <h3
-              v-else
-              class="ip__block--data-text ip__block--data-loading fade-in-left"
-            ></h3>
-          </div>
+        <div class="grid-item-25">
         </div>
       </div>
-      <MapsComponent v-if="userPos.lat && userPos.lng" :userPosition="userPos" :serverPosition="serverPos" />
-    </section>
-    <footer class="navbar">
+      <div class="grid-container">
+        <div class="grid-item">
+          Item 1
+        </div>
+        <div class="grid-item">
+          Item 2
+        </div>
+        <div class="grid-item">
+          Item 3
+        </div>
+        <div class="grid-item">
+          Item 4
+        </div>
+      </div>
+      <!--<div style="text-align:center">
+        <span class="dot" @click="currentSlide(1)"></span> 
+        <span class="dot" @click="currentSlide(2)"></span> 
+        <span class="dot" @click="currentSlide(3)"></span> 
+      </div>-->
+    <!--<footer class="navbar">
       <img src="/src/assets/svg/footer-logo.svg" class="navbar__footer--logo" />
-    </footer>
+    </footer>-->
   </main>
 </template>
 <script>
@@ -156,6 +70,12 @@ export default {
     LoadingComponent,
     MapsComponent,
     SpeedometerComponent,
+  },
+
+  data () {
+    return {
+      slideIndex: 1
+    }
   },
 
   setup() {
@@ -213,6 +133,8 @@ export default {
   },
 
   async mounted() {
+    this.showSlides(this.slideIndex);
+
     this.service.addressSpeed().then((data) => {
       const serverLocation = cfDataCenters[data.colo];
       this.locationData = {
@@ -314,6 +236,27 @@ export default {
       this.$forceUpdate();
       
       return true;
+    },
+    plusSlides(n) {
+      this.showSlides(this.slideIndex += n);
+    },
+    currentSlide(n) {
+      this.showSlides(this.slideIndex = n);
+    },
+    showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {this.slideIndex = 1}    
+      if (n < 1) {this.slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[this.slideIndex-1].style.display = "block";  
+      dots[this.slideIndex-1].className += " active";
     }
   },
 };
@@ -332,5 +275,145 @@ export default {
 }
 .v-popper--theme-tooltip .v-popper__arrow-outer {
   border-color: #f6ae2d !important;
+}
+
+/* MINHAS PERSONALIZACOES */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  padding: 20px;
+}
+
+.grid-item-25 {
+  flex: 0 0 25%;
+}
+
+.grid-item-50 {
+  flex: 0 0 50%;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Estilos para tamanhos de tela pequenos */
+@media (max-width: 767px) {
+  /* Estilos para dispositivos móveis */
+  .grid-item {
+    flex: 0 0 100%;
+  }
+}
+
+/* Estilos para tamanhos de tela médios */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos para tablets e dispositivos com tela média */
+  .grid-item {
+    flex: 0 0 50%;
+  }
+}
+
+/* Estilos para tamanhos de tela grandes */
+@media (min-width: 1024px) {
+  /* Estilos para desktops e dispositivos com tela grande */
+  .grid-item {
+    flex: 0 0 25%;
+  }
+}
+
+/* A PARTIR DAQUI */
+* {box-sizing: border-box}
+body {
+  background-color: black;
+  color: white;
+  font-family: Verdana, sans-serif; margin:0
+}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  /*max-width: 1000px;*/
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
 }
 </style>
