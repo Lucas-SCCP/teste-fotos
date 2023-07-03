@@ -297,7 +297,7 @@ export default {
   padding: 10px;
 }
 
-/* Estilos para tamanhos de tela pequenos */
+/* Estiloss para tamanhos de tela pequenos */
 @media (max-width: 767px) {
   /* Estilos para dispositivos móveis */
   .grid-item {
